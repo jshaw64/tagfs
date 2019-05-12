@@ -19,6 +19,9 @@ description = args.description
 value = args.value
 tags = args.tags.split(" ")
 
+def print_json(output):
+    print(json.dumps(output, indent=4))
+
 def runWrite():
     with open('sample.json') as json_file:
         data = json.load(json_file)
