@@ -2,6 +2,7 @@
 
 import json
 import argparse
+import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
@@ -25,6 +26,13 @@ tags = args.tags
 
 def print_json(output):
     print(json.dumps(output, indent=4))
+
+def write_json(output):
+    timestamp = datetime.datetime.now().timestamp()
+    filename = f"{timestamp}.json"
+
+    with open(filename, 'w') as json_file:
+        json_file.write(json.dumps(output, indent=4))
 
 def runWrite():
     with open('sample.json') as json_file:
