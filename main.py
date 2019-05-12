@@ -6,6 +6,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
 parser.add_argument('--write', action='store_true')
+parser.add_argument('--fuzzy', action='store_true')
 parser.add_argument('--search', type=str, default="")
 parser.add_argument('--name', type=str, default="")
 parser.add_argument('--description', type=str, default="")
@@ -52,6 +53,8 @@ def runFindFuzzy():
 
 if args.write:
     runWrite()
+elif args.fuzzy:
+    runFindFuzzy()
 elif args.find:
     runFind()
 else:
