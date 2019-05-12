@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
 
 import json
-import sys
+import argparse
 
-action = sys.argv[1]
-name = search = sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument('--find', action='store_true')
+parser.add_argument('--search', type=str, default="")
+parser.add_argument('--name', type=str, default="")
+parser.add_argument('--description', type=str, default="")
+parser.add_argument('--value', type=str, default="")
+parser.add_argument('--tags', type=str, default="")
+args = parser.parse_args()
 
-if action == "write":
-    description = sys.argv[3]
-    value = sys.argv[4]
-    tags = sys.argv[5].split(" ")
+action = "find" if args.find else "write"
+name = args.name
+search = args.search
+description = args.description
+value = args.value
+tags = args.tags.split(" ")
 
 def runWrite():
     with open('sample.json') as json_file:
