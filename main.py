@@ -75,9 +75,16 @@ def find_exact_by_any_value():
                     filtered.append(entry)
                     break
 
-        print_json(filtered)
+        deduped = []
+        seen = []
+        for entry in filtered:
+            if entry['key'] not in seen:
+                deduped.append(entry)
+                seen.append(entry['key'])
 
-        return filtered
+        print_json(deduped)
+
+        return deduped
 
 def find_fuzzy_by_any_value():
     with open('sample.json') as json_file:
@@ -95,7 +102,17 @@ def find_fuzzy_by_any_value():
                     filtered.append(entry)
                     break
 
-        return filtered
+        deduped = []
+        seen = []
+        for entry in filtered:
+            if entry['key'] not in seen:
+                deduped.append(entry)
+                seen.append(entry['key'])
+
+
+        print_json(deduped)
+
+        return deduped
 
 if args.write:
     runWrite()
