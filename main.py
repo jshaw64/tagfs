@@ -41,6 +41,10 @@ def get_latest_dataset():
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
 
+def print_latest_dataset():
+    with open(get_latest_dataset()) as json_file:
+        print_json(json.load(json_file))
+
 def runWrite():
     with open('sample.json') as json_file:
         data = json.load(json_file)
