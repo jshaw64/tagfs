@@ -67,10 +67,10 @@ def find_exact_by_any_value():
             for key, val in entry.items():
                 if key == 'tags':
                     for tag in entry[key]:
-                        if tag == search:
+                        if str(tag) == search:
                             filtered.append(entry)
                             break
-                if val == search:
+                if str(val) == search:
                     filtered.append(entry)
                     break
 
