@@ -5,6 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
+parser.add_argument('--write', action='store_true')
 parser.add_argument('--search', type=str, default="")
 parser.add_argument('--name', type=str, default="")
 parser.add_argument('--description', type=str, default="")
@@ -12,7 +13,6 @@ parser.add_argument('--value', type=str, default="")
 parser.add_argument('--tags', type=str, default="")
 args = parser.parse_args()
 
-action = "find" if args.find else "write"
 name = args.name
 search = args.search
 description = args.description
@@ -45,7 +45,7 @@ def runFind():
         print_json([entry for entry in data["entries"] if str(search) in entry["tags"]])
 
 
-if action == "write":
+if args.write:
     runWrite()
-if action == "find":
+else
     runFind()
