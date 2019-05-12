@@ -49,7 +49,10 @@ def runFindFuzzy():
     with open('sample.json') as json_file:
         data = json.load(json_file)
         filtered = [entry for entry in data["entries"] for tag in entry["tags"] if str(search) in tag]
+
         print_json(filtered)
+
+        return filtered
 
 if args.write:
     runWrite()
