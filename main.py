@@ -40,7 +40,7 @@ def runWrite():
         )
         json_file.write(json.dumps(data, indent=4))
 
-def runFindExact():
+def runFindExact(search):
     with open('sample.json') as json_file:
         data = json.load(json_file)
         filtered = [entry for entry in data["entries"] if str(search) in entry["tags"]]
@@ -49,7 +49,7 @@ def runFindExact():
 
         return filtered
 
-def runFindFuzzy():
+def runFindFuzzy(search):
     with open('sample.json') as json_file:
         data = json.load(json_file)
         filtered = [entry for entry in data["entries"] for tag in entry["tags"] if str(search) in tag]
@@ -61,8 +61,8 @@ def runFindFuzzy():
 if args.write:
     runWrite()
 elif args.fuzzy:
-    runFindFuzzy()
+    runFindFuzzy(search)
 elif args.find:
-    runFindExact()
+    runFindExact(search)
 else:
     print('invalid option')
