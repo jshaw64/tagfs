@@ -3,6 +3,8 @@
 import json
 import argparse
 import datetime
+import glob
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
@@ -33,6 +35,11 @@ def write_json(output):
 
     with open(filename, 'w') as json_file:
         json_file.write(json.dumps(output, indent=4))
+
+def get_latest_dataset():
+    list_of_files = glob.glob('./data/*')
+    latest_file = max(list_of_files, key=os.path.getctime)
+    print(latest_file)
 
 def runWrite():
     with open('sample.json') as json_file:
