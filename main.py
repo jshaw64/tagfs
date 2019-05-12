@@ -79,6 +79,23 @@ def find_exact_by_any_value():
 
         return filtered
 
+def find_fuzzy_by_any_value():
+    with open('sample.json') as json_file:
+        data = json.load(json_file)
+
+        filtered = []
+        for entry in data["entries"]:
+            for key, val in entry.items():
+                if key == 'tags':
+                    for tag in entry[key]:
+                        if search in str(tag):
+                            filtered.append(entry)
+                            break
+                if search in str(val):
+                    filtered.append(entry)
+                    break
+
+        return filtered
 
 if args.write:
     runWrite()
