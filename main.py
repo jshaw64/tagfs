@@ -3,10 +3,11 @@
 import json
 import sys
 
-name = sys.argv[1]
-description = sys.argv[2]
-value = sys.argv[3]
-tags = sys.argv[4].split(" ")
+action = sys.argv[1]
+name = sys.argv[2]
+description = sys.argv[3]
+value = sys.argv[4]
+tags = sys.argv[5].split(" ")
 
 def runWrite():
     with open('sample.json') as json_file:
@@ -22,4 +23,5 @@ def runWrite():
         )
         json_file.write(json.dumps(data, indent=4))
 
-runWrite()
+if action == "write":
+    runWrite()
