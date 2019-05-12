@@ -25,5 +25,13 @@ def runWrite():
         )
         json_file.write(json.dumps(data, indent=4))
 
+def runFind():
+    with open('sample.json') as json_file:
+        data = json.load(json_file)
+        print(json.dumps([entry for entry in data["entries"] if str(search) in entry["tags"]]))
+
+
 if action == "write":
     runWrite()
+if action == "find":
+    runFind()
