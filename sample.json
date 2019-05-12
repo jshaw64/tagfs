@@ -1,10 +1,13 @@
 {
+  "lastKey": 1,
   "entries": [{
+    "key": 0,
     "name": "testname1",
     "description": "",
     "value": "testurl1",
     "tags": ["tag1", "tag2"]
   }, {
+    "key": 1,
     "name": "testname2",
     "description": "",
     "value": "testurl2",
