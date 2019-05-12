@@ -144,14 +144,18 @@ def update_by_key(key):
                 entry = filtered
                 break
 
-        print_json(data)
-
         return data
+
+def run_update_by_key(key):
+    updated = update_by_key(key)
+
+    print_json(updated)
+    write_json(updated)
 
 if args.write:
     runWrite()
 elif args.update:
-    update_by_key(args.key)
+    run_update_by_key(args.key)
 elif args.any_value:
     if args.fuzzy:
         find_fuzzy_by_any_value()
