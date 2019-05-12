@@ -114,6 +114,27 @@ def find_fuzzy_by_any_value():
 
         return deduped
 
+def update_by_key(key):
+    with open('sample.json') as json_file:
+        data = json.load(json_file)
+
+        filtered = [entry for entry in data["entries"] if entry["key"] == key][0]
+
+        if args.name:
+            filtered["name"] = args.name
+        if args.description:
+            filtered["description"] = args.description
+        if args.value:
+            filtered["value"] = args.value
+        if args.tags:
+            filtered["tags"] = args.tags
+
+        print_json(filtered)
+
+        return filtered
+
+
+
 if args.write:
     runWrite()
 elif args.any_value:
