@@ -4,4 +4,10 @@ import json
 
 with open('sample.json') as json_file:
     data = json.load(json_file)
-    print(data);
+
+with open('sample.json', 'w') as json_file:
+    data["entries"].append({
+            "hello": "world"
+        }
+    )
+    json_file.write(json.dumps(data, indent=4))
