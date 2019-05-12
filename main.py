@@ -29,7 +29,7 @@ def print_json(output):
 
 def write_json(output):
     timestamp = datetime.datetime.now().timestamp()
-    filename = f"{timestamp}.json"
+    filename = f"./data/{timestamp}.json"
 
     with open(filename, 'w') as json_file:
         json_file.write(json.dumps(output, indent=4))
