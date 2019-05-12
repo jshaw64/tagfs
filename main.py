@@ -11,14 +11,14 @@ parser.add_argument('--search', type=str, default="")
 parser.add_argument('--name', type=str, default="")
 parser.add_argument('--description', type=str, default="")
 parser.add_argument('--value', type=str, default="")
-parser.add_argument('--tags', type=str, default="")
+parser.add_argument('--tags', nargs='+')
 args = parser.parse_args()
 
 name = args.name
 search = args.search
 description = args.description
 value = args.value
-tags = args.tags.split(" ")
+tags = args.tags
 
 def print_json(output):
     print(json.dumps(output, indent=4))
