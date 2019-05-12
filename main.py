@@ -8,6 +8,8 @@ parser.add_argument('--find', action='store_true')
 parser.add_argument('--any-value', action='store_true')
 parser.add_argument('--write', action='store_true')
 parser.add_argument('--fuzzy', action='store_true')
+parser.add_argument('--update', action='store_true')
+parser.add_argument('--key', type=int, default="")
 parser.add_argument('--search', type=str, default="")
 parser.add_argument('--name', type=str, default="")
 parser.add_argument('--description', type=str, default="")
@@ -137,6 +139,8 @@ def update_by_key(key):
 
 if args.write:
     runWrite()
+elif args.update:
+    update_by_key(args.key)
 elif args.any_value:
     if args.fuzzy:
         find_fuzzy_by_any_value()
