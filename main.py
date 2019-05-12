@@ -5,6 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
+parser.add_argument('--any-value', action='store_true')
 parser.add_argument('--write', action='store_true')
 parser.add_argument('--fuzzy', action='store_true')
 parser.add_argument('--search', type=str, default="")
@@ -81,6 +82,8 @@ def find_exact_by_any_value():
 
 if args.write:
     runWrite()
+elif args.any_value:
+    find_exact_by_any_value()
 elif args.fuzzy:
     find_fuzzy(search)
 elif args.find:
