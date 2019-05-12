@@ -131,11 +131,14 @@ def update_by_key(key):
         if args.tags:
             filtered["tags"] = args.tags
 
-        print_json(filtered)
+        for entry in data['entries']:
+            if entry['key'] == args.key:
+                entry = filtered
+                break
 
-        return filtered
+        print_json(data)
 
-
+        return data
 
 if args.write:
     runWrite()
