@@ -4,10 +4,12 @@ import json
 import sys
 
 action = sys.argv[1]
-name = sys.argv[2]
-description = sys.argv[3]
-value = sys.argv[4]
-tags = sys.argv[5].split(" ")
+name = search = sys.argv[2]
+
+if action == "write":
+    description = sys.argv[3]
+    value = sys.argv[4]
+    tags = sys.argv[5].split(" ")
 
 def runWrite():
     with open('sample.json') as json_file:
