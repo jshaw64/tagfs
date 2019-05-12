@@ -100,7 +100,10 @@ def find_fuzzy_by_any_value():
 if args.write:
     runWrite()
 elif args.any_value:
-    find_exact_by_any_value()
+    if args.fuzzy:
+        find_fuzzy_by_any_value()
+    else:
+        find_exact_by_any_value()
 elif args.fuzzy:
     find_fuzzy(search)
 elif args.find:
