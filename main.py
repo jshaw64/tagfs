@@ -24,7 +24,10 @@ def runWrite():
         data = json.load(json_file)
 
     with open('sample.json', 'w') as json_file:
+        newKey = data["lastKey"] + 1
+        data["lastKey"] = newKey
         data["entries"].append({
+                "key": newKey,
                 "name": name,
                 "description": description,
                 "value": value,
