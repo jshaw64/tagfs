@@ -47,5 +47,7 @@ def runFind():
 
 if args.write:
     runWrite()
-else
+elif args.find:
     runFind()
+else:
+    print('invalid option')
