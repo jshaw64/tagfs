@@ -29,18 +29,23 @@ description = args.description
 value = args.value
 tags = args.tags
 
+data_path = os.path.join(os.environ['jfs_dir_appdata'], 'tagfs')
+
+if not os.path.isdir(data_path):
+    data_path = f'{os.path.dirname(__file__)}/data/'
+
 def print_json(output):
     print(json.dumps(output, indent=4))
 
 def write_json(output):
     timestamp = datetime.datetime.now().timestamp()
-    filename = f"{os.path.dirname(__file__)}/data/{timestamp}.json"
+    filename = f"{data_path}/{timestamp}.json"
 
     with open(filename, 'w') as json_file:
         json_file.write(json.dumps(output, indent=4))
 
 def get_latest_dataset():
-    list_of_files = glob.glob(f'{os.path.dirname(__file__)}/data/*')
+    list_of_files = glob.glob(f'{data_path}/*')
     latest_file = max(list_of_files, key=os.path.getctime)
 
     return latest_file
