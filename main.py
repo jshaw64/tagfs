@@ -20,6 +20,7 @@ parser.add_argument('--description', type=str, default="")
 parser.add_argument('--value', type=str, default="")
 parser.add_argument('--tags', nargs='+')
 parser.add_argument('--print', action='store_true')
+parser.add_argument('--delete', action='store_true')
 args = parser.parse_args()
 
 name = args.name
@@ -193,6 +194,12 @@ def delete_by_key(key):
 
         return data
 
+def run_delete_by_key(key):
+    updated = delete_by_key(key)
+
+    print_json(updated)
+    write_json(updated)
+
 if args.write:
     run_write()
 elif args.update:
@@ -210,5 +217,7 @@ elif args.print:
     print_latest_dataset()
 elif args.list_tags:
     print_all_tags()
+elif args.delete:
+    run_delete_by_key(args.key)
 else:
     print('invalid option')
