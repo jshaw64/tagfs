@@ -39,13 +39,13 @@ def print_json(output):
 
 def write_json(output):
     timestamp = datetime.datetime.now().timestamp()
-    filename = f"{os.path.dirname(__file__)}/data/{timestamp}.json"
+    filename = f"{data_path}/{timestamp}.json"
 
     with open(filename, 'w') as json_file:
         json_file.write(json.dumps(output, indent=4))
 
 def get_latest_dataset():
-    list_of_files = glob.glob(f'{os.path.dirname(__file__)}/data/*')
+    list_of_files = glob.glob(f'{data_path}/*')
     latest_file = max(list_of_files, key=os.path.getctime)
 
     return latest_file
