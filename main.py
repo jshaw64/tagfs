@@ -18,6 +18,7 @@ parser.add_argument('--name', type=str, default="")
 parser.add_argument('--description', type=str, default="")
 parser.add_argument('--value', type=str, default="")
 parser.add_argument('--tags', nargs='+')
+parser.add_argument('--print', action='store_true')
 args = parser.parse_args()
 
 name = args.name
@@ -177,5 +178,7 @@ elif args.fuzzy:
     find_fuzzy(search)
 elif args.find:
     find_exact(search)
+elif args.print:
+    print_latest_dataset()
 else:
     print('invalid option')
