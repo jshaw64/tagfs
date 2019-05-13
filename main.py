@@ -38,7 +38,7 @@ def write_json(output):
         json_file.write(json.dumps(output, indent=4))
 
 def get_latest_dataset():
-    list_of_files = glob.glob('./data/*')
+    list_of_files = glob.glob(f'{os.path.dirname(__file__)}/data/*')
     latest_file = max(list_of_files, key=os.path.getctime)
 
     return latest_file
@@ -48,7 +48,7 @@ def print_latest_dataset():
         print_json(json.load(json_file))
 
 def run_write():
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
 
         newKey = data["lastKey"] + 1
@@ -65,7 +65,7 @@ def run_write():
         write_json(data)
 
 def find_exact(search):
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
         filtered = [entry for entry in data["entries"] if str(search) in entry["tags"]]
 
@@ -74,7 +74,7 @@ def find_exact(search):
         return filtered
 
 def find_fuzzy(search):
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
         filtered = [entry for entry in data["entries"] for tag in entry["tags"] if str(search) in tag]
 
@@ -83,7 +83,7 @@ def find_fuzzy(search):
         return filtered
 
 def find_exact_by_any_value():
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
         filtered = []
 
@@ -110,7 +110,7 @@ def find_exact_by_any_value():
         return deduped
 
 def find_fuzzy_by_any_value():
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
 
         filtered = []
@@ -138,7 +138,7 @@ def find_fuzzy_by_any_value():
         return deduped
 
 def update_by_key(key):
-    with open('sample.json') as json_file:
+    with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
 
         filtered = [entry for entry in data["entries"] if entry["key"] == key][0]
