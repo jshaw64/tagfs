@@ -184,6 +184,15 @@ def run_update_by_key(key):
     print_json(updated)
     write_json(updated)
 
+def delete_by_key(key):
+    with open(get_latest_dataset()) as json_file:
+        data = json.load(json_file)
+
+        filtered = [entry for entry in data["entries"] if entry["key"] != key]
+        data["entries"] = filtered
+
+        return data
+
 if args.write:
     run_write()
 elif args.update:
