@@ -8,6 +8,7 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--find', action='store_true')
+parser.add_argument('--list-tags', action='store_true')
 parser.add_argument('--any-value', action='store_true')
 parser.add_argument('--write', action='store_true')
 parser.add_argument('--fuzzy', action='store_true')
@@ -198,5 +199,7 @@ elif args.find:
     find_exact(search)
 elif args.print:
     print_latest_dataset()
+elif args.list_tags:
+    print_all_tags()
 else:
     print('invalid option')
