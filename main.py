@@ -29,6 +29,11 @@ description = args.description
 value = args.value
 tags = args.tags
 
+data_path = os.path.join(os.environ['jfs_dir_appdata'], 'tagfs')
+
+if not os.path.isdir(data_path):
+    data_path = f'{os.path.dirname(__file__)}/data/'
+
 def print_json(output):
     print(json.dumps(output, indent=4))
 
