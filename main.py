@@ -47,6 +47,24 @@ def print_latest_dataset():
     with open(get_latest_dataset()) as json_file:
         print_json(json.load(json_file))
 
+def print_all_tags():
+    with open(get_latest_dataset()) as json_file:
+        data = json.load(json_file)
+
+        all_tags = []
+        for entry in data["entries"]:
+            for tag in entry["tags"]:
+                all_tags.append(tag)
+
+        all_tags_deduped = []
+        seen = []
+        for tag in all_tags:
+            if tag not in seen:
+                all_tags_deduped.append(tag)
+                seen.append(tag)
+
+        print_json(all_tags_deduped)
+
 def run_write():
     with open(get_latest_dataset()) as json_file:
         data = json.load(json_file)
