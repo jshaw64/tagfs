@@ -47,7 +47,7 @@ def print_latest_dataset():
     with open(get_latest_dataset()) as json_file:
         print_json(json.load(json_file))
 
-def runWrite():
+def run_write():
     with open('sample.json') as json_file:
         data = json.load(json_file)
 
@@ -166,7 +166,7 @@ def run_update_by_key(key):
     write_json(updated)
 
 if args.write:
-    runWrite()
+    run_write()
 elif args.update:
     run_update_by_key(args.key)
 elif args.any_value:
