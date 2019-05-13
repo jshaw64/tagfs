@@ -51,7 +51,6 @@ def runWrite():
     with open('sample.json') as json_file:
         data = json.load(json_file)
 
-    with open('sample.json', 'w') as json_file:
         newKey = data["lastKey"] + 1
         data["lastKey"] = newKey
         data["entries"].append({
@@ -62,7 +61,8 @@ def runWrite():
                 "tags": tags
             }
         )
-        json_file.write(json.dumps(data, indent=4))
+
+        write_json(data)
 
 def find_exact(search):
     with open('sample.json') as json_file:
